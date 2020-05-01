@@ -1,0 +1,11 @@
+<md-card class="flowchartCard">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="quarterTitle">{{quarter.quarterName.charAt(0) + quarter.quarterName.toLowerCase().slice(1)}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content class="{{quarter.id}} quarterCard" dragula='"quarter-bag"' dragula-scope="$parent" layout="column"
+                     layout-align="center center">
+        <course class="{{course.id}} {{course.name}} course" ng-repeat="course in quarter.courses"></course>
+    </md-card-content>
+</md-card>

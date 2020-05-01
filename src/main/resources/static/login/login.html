@@ -1,0 +1,24 @@
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <h2 flex md-truncate>Login</h2>
+    </div>
+</md-toolbar>
+<md-progress-linear md-mode="indeterminate" ng-disabled="!isLoading"></md-progress-linear>
+<md-content layout="row" layout-align="center">
+    <md-card id="loginCard">
+        <md-card-content>
+            <md-input-container class="md-block">
+                <input ng-model="user.username" type="email" placeholder="Email" ng-required="true"
+                       ng-keyup="$event.keyCode == 13 && login()" autofocus>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <input ng-model="user.password" type="password" placeholder="Password" ng-required="true"
+                       ng-keyup="$event.keyCode == 13 && login()">
+            </md-input-container>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="space-around">
+            <md-button ng-click="login()" class="md-primary">Login</md-button>
+            <md-button ui-sref="signup()" class="md-primary">Sign Up</md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>

@@ -1,0 +1,37 @@
+<md-card>
+    <md-card-title class="year-header">
+        <md-card-title-text>
+            <span class="md-headline whiteText">{{year.name}}</span>
+        </md-card-title-text>
+        <md-menu>
+            <md-button class="md-icon-button" ng-click="openMenu($mdMenu, $event)" aria-label="More">
+                <md-icon md-menu-origin="" md-svg-icon="assets/icons/more.svg"></md-icon>
+            </md-button>
+            <md-menu-content>
+                <md-menu-item>
+                    <md-button ng-click="showSummer(year.id, year.name)">
+                        Toggle Summer
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="removeYear(year.id, year.name, $event)">
+                        Remove year
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="renameYear(year.id, year.name, $event)">
+                        Rename year
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="clearYear(year.id, year.name, $event)">
+                        Clear courses
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </md-card-title>
+    <md-card-content class="{{year.id}}" layout="row">
+        <quarter class="quarter" ng-repeat="quarter in year.quarters"></quarter>
+    </md-card-content>
+</md-card>

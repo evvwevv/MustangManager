@@ -1,0 +1,122 @@
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <md-button aria-label="Menu" ng-click="toggleLeft()" class="md-icon-button"
+                   id="hamburger">
+            <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
+        </md-button>
+        <h2 flex md-truncate id="title">{{flowchartName}}</h2>
+        <h4 md-truncate id="userName">{{userName}}</h4>
+        <md-button ng-click="logout()" class="md-primary" id="logout">Logout</md-button>
+    </div>
+</md-toolbar>
+
+<md-content layout="row" layout-align="center center">
+    <md-card id="searchCard">
+        <md-card-title id="search-header">
+            <md-card-title-text>
+                <span class="md-headline whiteText">Course Search</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-progress-linear md-mode="indeterminate" ng-disabled="!isLoading"></md-progress-linear>
+        <md-input-container id="searchSpace" class="md-block">
+            <input ng-model="query" type="text" placeholder="Enter a course... 'CPE123'"
+                   ng-keyup="search()" autofocus>
+        </md-input-container>
+        <md-card-content id="resultSpace">
+            <md-content class="courseSearchWrapper" ng-show="courseArr.length > 0" dragula='"quarter-bag"' layout-margin
+                        layout="row" layout-align="center" layout-wrap>
+                <course class="{{course.id}} {{course.name}} course" ng-repeat="course in courseArr"></course>
+            </md-content>
+        </md-card-content>
+    </md-card>
+    <md-card id="infoCard">
+        <md-card-title id="info-header">
+            <md-card-title-text>
+                <span class="md-headline whiteText">Course Info</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-progress-linear md-mode="indeterminate" ng-disabled="true"></md-progress-linear>
+        <md-card-content id="infoSpace">
+            <h2>{{name}} {{title}} {{units}}</h2>
+            <p>{{termsOffered}}</p>
+            <p>{{prerequisites}}</p>
+            <p>{{description}}</p>
+        </md-card-content>
+    </md-card>
+</md-content>
+
+<md-content id="flowchartHome" layout="row" layout-align="center" layout-wrap>
+    <year ng-repeat="year in yearArr"></year>
+</md-content>
+
+<md-button ng-click="addYear()" class="md-fab md-primary">
+    <md-tooltip md-direction="left">
+        Add Year
+    </md-tooltip>
+    <md-icon md-svg-src="assets/icons/add.svg">
+    </md-icon>
+</md-button>
+
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left">
+    <md-toolbar ng-controller="LeftCtrl" class="md-theme-light">
+        <div class="md-toolbar-tools">
+            <h2 flex class="md-toolbar-tools">Menu</h2>
+            <md-button ng-click="close()" class="md-primary" id="closeNav">
+                Close
+            </md-button>
+        </div>
+    </md-toolbar>
+
+
+    <md-content class="list-padding" layout-padding="" layout="column" ng-controller="ManageFlowchartMenu">
+        <md-button ng-click="showMenu = !showMenu"
+                   class="md-primary faq-dialog-open-button sideNav-button" aria-label="View Source">
+            Manage Flowcharts
+        </md-button>
+
+        <md-content ng-show="showMenu" class="menu-color">
+            <md-content ng-repeat="flowchart in flowchartArr" class="menu-color">
+                <md-button class="faq-dialog-open-button selectFC-button" ng-click="selectFlowchart(flowchart.id)">
+                    {{flowchart.name | limitTo : namelength}}
+                </md-button>
+
+
+                <md-menu>
+                    <md-button class="md-icon-button editFC-button" ng-click="openMenu($mdMenu, $event)"
+                               aria-label="More">
+                        <md-icon md-menu-origin="" md-svg-icon="assets/icons/more.svg"></md-icon>
+                    </md-button>
+
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ng-click="renameFlowchart(flowchart.id)" aria-label="Rename Flowchart">
+                                Edit Name
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="deleteFlowchart(flowchart.id)">
+                                Delete Flowchart
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-content>
+
+            <md-content class="menu-color">
+                <md-button class="faq-dialog-open-button selectFC-button" ng-click="createFlowchart()">
+                    Create Flowchart
+                </md-button>
+            </md-content>
+
+        </md-content>
+
+
+        <md-button class="md-primary faq-dialog-open-button sideNav-button" ng-click="">
+            Export Flowchart
+        </md-button>
+        <md-button class="md-primary faq-dialog-open-button sideNav-button" ng-click="ctrl.showDialog($event)">
+            FAQ
+        </md-button>
+
+    </md-content>
+</md-sidenav>
