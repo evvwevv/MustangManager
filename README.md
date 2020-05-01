@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/cpe308-309/Mustang-Manager.svg?branch=master)](https://travis-ci.org/cpe308-309/Mustang-Manager) [![Quality Gate](https://sonarqube.com/api/badges/gate?key=mustang.manager)](https://sonarqube.com/dashboard/index/mustang.manager) [![Stories in Ready](https://badge.waffle.io/cpe308-309/Group-name.png?label=ready&title=Ready)](https://waffle.io/cpe308-309/Mustang-Manager)
-
+# Reupload for purposes of portfolio completion
+The original repository has been deleted.
 # Mustang Manager
 __Group Name__
 
